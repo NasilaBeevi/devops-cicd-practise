@@ -1,0 +1,39 @@
+name: Day 2 CI Pipeline
+
+on:
+  push:
+    branches:
+      - day2-ci-pipeline
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check runner information
+        run: |
+          echo "Runner information"
+          whoami
+          pwd
+          uname -a
+
+      - name: Check project files
+        run: |
+          ls -la
+          ls -la app
+          ls -la tests
+
+      - name: Validate application
+        run: bash tests/validate.sh
+
+      - name: CI success message
+        run: echo "CI pipeline completed successfully!"
