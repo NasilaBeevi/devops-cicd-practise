@@ -9,7 +9,7 @@ fi
 
 echo "HTML file exists."
 
-if grep -q "my devops training project" app/index.html; then
+if grep -q "My DevOps Training Project" app/index.html; then
     echo "Application title found."
 else
     echo "ERROR: Application title missing."
